@@ -19,10 +19,14 @@ import {
   CheckCircle2,
   XCircle,
   TrendingUp,
+  User,
+  Clipboard,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export default function AttendanceCalculator() {
+  const [name, setName] = useState("");
+  const [rollNumber, setRollNumber] = useState("");
   const [attended, setAttended] = useState("");
   const [total, setTotal] = useState("");
   const [threshold, setThreshold] = useState([75]);
@@ -68,6 +72,34 @@ export default function AttendanceCalculator() {
       </CardHeader>
       <CardContent className="space-y-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="space-y-2">
+            <Label htmlFor="name" className="flex items-center gap-2">
+              <User className="w-4 h-4" />
+              Name
+            </Label>
+            <Input
+              id="name"
+              type="text"
+              placeholder="e.g., John Doe"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="font-sans"
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="roll-number" className="flex items-center gap-2">
+              <Clipboard className="w-4 h-4" />
+              Roll Number
+            </Label>
+            <Input
+              id="roll-number"
+              type="text"
+              placeholder="e.g., 21BCS001"
+              value={rollNumber}
+              onChange={(e) => setRollNumber(e.target.value)}
+              className="font-sans"
+            />
+          </div>
           <div className="space-y-2">
             <Label htmlFor="attended" className="flex items-center gap-2">
               <CalendarCheck className="w-4 h-4" />
